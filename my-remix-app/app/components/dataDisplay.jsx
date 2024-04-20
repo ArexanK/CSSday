@@ -39,6 +39,18 @@ export default function DataDisplay() {
               <p>Days: {data[selectedYear].days}</p>
               <p>Date: {data[selectedYear].date}</p>
               <p>Total Attendees: {data[selectedYear].attendees.count}</p>
+
+              <p>Countries:</p>
+              <ul>
+                {Object.entries(data[selectedYear].attendees.countries).map(
+                  ([countryCode, count]) => (
+                    <li>
+                      {countryCode}: {count}
+                    </li>
+                  )
+                )}
+              </ul>
+
               {Object.keys(data[selectedYear].talks).map((talkIndex) => (
                 <div key={talkIndex}>
                   <h3>{data[selectedYear].talks[talkIndex].title}</h3>
