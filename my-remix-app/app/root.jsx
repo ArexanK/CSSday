@@ -10,7 +10,7 @@ export default function App() {
         <Links />
       </head>
       <body>
-        <h1>Hello world!</h1>
+        <h1>CSS DAY </h1>
         <DataDisplay />
         <Outlet />
 

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 
 export default function DataDisplay() {
   const [data, setData] = useState(null);
+  const [selectedYear, setSelectedYear] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -17,10 +18,28 @@ export default function DataDisplay() {
     fetchData();
   }, []);
 
+  const handleClick = (year) => {
+    setSelectedYear(year);
+  };
+
   return (
     <div>
       {data ? (
-        <pre>{JSON.stringify(data, null, 2)}</pre>
+        <div>
+          <ul>
+            {Object.keys(data).map((year) => (
+              <li key={year}>
+                <button onClick={() => handleClick(year)}>{year}</button>
+              </li>
+            ))}
+          </ul>
+          {selectedYear && (
+            <div>
+              <h2>Data for {selectedYear}</h2>
+              <pre>{JSON.stringify(data[selectedYear], null, 2)}</pre>
+            </div>
+          )}
+        </div>
       ) : (
         <p>Loading data...</p>
       )}
