@@ -36,7 +36,33 @@ export default function DataDisplay() {
           {selectedYear && (
             <div>
               <h2>Data for {selectedYear}</h2>
-              <pre>{JSON.stringify(data[selectedYear], null, 2)}</pre>
+              <p>Days: {data[selectedYear].days}</p>
+              <p>Date: {data[selectedYear].date}</p>
+              <p>Total Attendees: {data[selectedYear].attendees.count}</p>
+              {Object.keys(data[selectedYear].talks).map((talkIndex) => (
+                <div key={talkIndex}>
+                  <h3>{data[selectedYear].talks[talkIndex].title}</h3>
+                  <p>
+                    Description:{" "}
+                    {data[selectedYear].talks[talkIndex].description}
+                  </p>
+                  <ul>
+                    {data[selectedYear].talks[talkIndex].speaker.map(
+                      (speaker, index) => (
+                        <li key={index}>
+                          <img
+                            src={speaker.avatar}
+                            alt={`Avatar of ${speaker.name}`}
+                          />
+                          <p>Name: {speaker.name}</p>
+                          <p>Country: {speaker.country}</p>
+                          <a href={speaker.link}>Speaker Link</a>
+                        </li>
+                      )
+                    )}
+                  </ul>
+                </div>
+              ))}
             </div>
           )}
         </div>

@@ -1,5 +1,6 @@
 import { Links, Meta, Outlet, Scripts } from "@remix-run/react";
 import DataDisplay from "./components/dataDisplay";
+import MobilePhone from "./components/mobilePhone";
 
 export default function App() {
   return (
@@ -10,7 +11,7 @@ export default function App() {
         <Links />
       </head>
       <body>
-        <h1>CSS DAY </h1>
+        <h1>CSS DAY</h1>
         <DataDisplay />
         <Outlet />
 
