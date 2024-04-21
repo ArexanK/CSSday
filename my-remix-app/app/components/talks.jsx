@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from "react";
-import Speakers from "./speakers"; // Assuming Speakers component is in a separate file
+import Speakers from "./speakers";
 
 export default function Talks({ talks }) {
   const containerRef = useRef(null);
@@ -12,11 +12,9 @@ export default function Talks({ talks }) {
         const scrollWidth = container.scrollWidth;
         const clientWidth = container.clientWidth;
 
-        // Calculate the percentage scrolled
         const scrollPercentage =
           (scrollLeft / (scrollWidth - clientWidth)) * 100;
 
-        // Apply animation based on scroll percentage
         const cards = container.querySelectorAll(".talk-card");
         cards.forEach((card) => {
           card.style.animationDelay = `-${scrollPercentage}s`;
@@ -24,10 +22,8 @@ export default function Talks({ talks }) {
       }
     };
 
-    // Listen for scroll events
     containerRef.current.addEventListener("scroll", handleScroll);
 
-    // Cleanup
     return () => {
       containerRef.current.removeEventListener("scroll", handleScroll);
     };
