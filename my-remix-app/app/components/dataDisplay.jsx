@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import YearData from "./yearData";
 
 export default function DataDisplay() {
   const [data, setData] = useState(null);
@@ -29,54 +30,14 @@ export default function DataDisplay() {
           <ul>
             {Object.keys(data).map((year) => (
               <li key={year}>
-                <button onClick={() => handleClick(year)}>{year}</button>
+                <div className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                  <button onClick={() => handleClick(year)}>{year}</button>
+                </div>
               </li>
             ))}
           </ul>
-          {selectedYear && (
-            <div>
-              <h2>Data for {selectedYear}</h2>
-              <p>Days: {data[selectedYear].days}</p>
-              <p>Date: {data[selectedYear].date}</p>
-              <p>Total Attendees: {data[selectedYear].attendees.count}</p>
 
-              <p>Countries:</p>
-              <ul>
-                {Object.entries(data[selectedYear].attendees.countries).map(
-                  ([countryCode, count]) => (
-                    <li>
-                      {countryCode}: {count}
-                    </li>
-                  )
-                )}
-              </ul>
-
-              {Object.keys(data[selectedYear].talks).map((talkIndex) => (
-                <div key={talkIndex}>
-                  <h3>{data[selectedYear].talks[talkIndex].title}</h3>
-                  <p>
-                    Description:{" "}
-                    {data[selectedYear].talks[talkIndex].description}
-                  </p>
-                  <ul>
-                    {data[selectedYear].talks[talkIndex].speaker.map(
-                      (speaker, index) => (
-                        <li key={index}>
-                          <img
-                            src={speaker.avatar}
-                            alt={`Avatar of ${speaker.name}`}
-                          />
-                          <p>Name: {speaker.name}</p>
-                          <p>Country: {speaker.country}</p>
-                          <a href={speaker.link}>Speaker Link</a>
-                        </li>
-                      )
-                    )}
-                  </ul>
-                </div>
-              ))}
-            </div>
-          )}
+          {selectedYear && <YearData yearData={data[selectedYear]} />}
         </div>
       ) : (
         <p>Loading data...</p>
