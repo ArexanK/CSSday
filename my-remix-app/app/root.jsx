@@ -12,8 +12,6 @@ export default function App() {
         <Links />
       </head>
       <body>
-        <h1>CSS DAY</h1>
-
         <DataDisplay />
         <Outlet />
 

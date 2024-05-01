@@ -2,11 +2,11 @@ import React from "react";
 
 export default function Speakers({ speakers }) {
   return (
-    <div className="grid grid-cols-3 gap-4 bg-gray-200 p-4">
+    <div className="grid justify-center">
       {speakers.map((speaker, index) => (
         <div
           key={index}
-          className="speaker-card bg-white rounded-lg shadow-md flex flex-col justify-between w-72 h-72"
+          className="speaker-card bg-white rounded-lg shadow-md  justify-between w-72 h-72"
         >
           <div className="p-4">
             <img
@@ -20,7 +20,7 @@ export default function Speakers({ speakers }) {
           <div className="p-4">
             <a
               href={speaker.link}
-              className="block text-center mt-2 text-blue-500 hover:text-blue-700"
+              className="block text-center mt-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded justify-center"
             >
               Speaker Link
             </a>
