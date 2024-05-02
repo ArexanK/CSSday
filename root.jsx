@@ -1,5 +1,5 @@
 import { Links, Meta, Outlet, Scripts } from "@remix-run/react";
-import DataDisplay from "./app/components/dataDisplay";
+import DataDisplay from "./my-remix-app/app/components/dataDisplay";
 import "./tailwind.css";
 
 export default function App() {
